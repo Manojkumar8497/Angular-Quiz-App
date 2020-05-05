@@ -1,0 +1,56 @@
+.spinner {
+  text-align: center;
+}
+#quiz-container {
+  position: relative;
+  mat-card {
+    position: relative;
+    border-radius: 5px;
+    z-index: 100;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: var(--progress-bar);
+      top: 0;
+      left: 0;
+      border-radius: 5px;
+      border-top: 10px solid #3f51b5;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 5px;
+      border-top: 10px solid rgba(63, 81, 181, 0.5);
+      z-index: -9;
+    }
+    mat-card-title {
+      line-height: 1.3;
+      margin-top: 10px;
+    }
+    mat-card-content {
+      .example-radio-group {
+        margin: 10px;
+        padding-left: 20px;
+        .example-radio-button {
+          margin: 5px;
+        }
+      }
+    }
+    mat-card-actions {
+      .btnGroup {
+        margin: 1rem;
+        padding-left: 1.5rem;
+      }
+    }
+  }
+  .display-timer {
+    position: absolute;
+    top: 5rem;
+    right: 2rem;
+  }
+}

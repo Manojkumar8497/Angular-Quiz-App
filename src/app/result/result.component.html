@@ -1,0 +1,70 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<!-- Result section -->
+<div class="result-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlexFill="100%"
+    *ngIf="quizService.questionData">
+    <mat-card fxFlex="90%" class="mat-elevation-z5">
+        <!-- Result -->
+        <div fxLayout="row" fxLayout.xs="column" class="padding">
+            <div fxFlex="50%" fxLayoutAlign="center center">
+                <img src="../../assets/img/trophy.png" alt="" width="300">
+            </div>
+            <div fxFlex="50%" fxLayoutAlign="start center">
+                <div class="result-content">
+                    <mat-card-title>Congratulations <span>{{userDetails.name | uppercase}}!!</span></mat-card-title>
+                    <div class="inner-content">
+                        <p class="score">Your Score: {{quizService.correctAnsCount}} /
+                            {{quizService.questionData.length}}</p>
+                        <p class="timer">Time Elapsed: {{quizService.displayTimeElapsed()}}</p>
+                        <button mat-raised-button color="primary" class="mr-5" (click)="submit()"
+                            [disabled]="quizService.questionData.length<1 || isSubmitted">
+                            <mat-icon>save</mat-icon> Submit
+                        </button>
+                        <button mat-raised-button color="accent" (click)="retry()">
+                            <mat-icon>replay</mat-icon> Retry
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Divider -->
+        <mat-divider [inset]="true"></mat-divider>
+        <!-- Result questions detail -->
+        <div class="accordion">
+            <p class="title">Correct Answers:</p>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let question of quizService.questionData let i=index">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title fxLayoutAlign="flex-start center"
+                            [ngClass]="question.answer === question.participantAnswer ? 'primary':'accent'">
+                            {{i+1}}. {{question.question}}
+                        </mat-panel-title>
+                        <!-- Chcek or Close icon -->
+                        <mat-panel-description fxLayoutAlign="flex-end center">
+                            <!-- <mat-chip-list> -->
+                            <button mat-icon-button
+                                [color]="question.answer === question.participantAnswer ? 'primary':'accent'" selected>
+                                <mat-icon>
+                                    {{question.answer === question.participantAnswer ? 'sentiment_very_satisfied':'sentiment_very_dissatisfied'}}
+                                </mat-icon>
+                            </button>
+                            <!-- </mat-chip-list> -->
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <!-- Options -->
+                    <mat-radio-group class="example-radio-group" fxLayout="column">
+                        <mat-radio-button class="example-radio-button"
+                            *ngFor="let option of question.options let i = index" [value]="i"
+                            [checked]="i===question.answer || i===question.participantAnswer"
+                            [disabled]="i!=question.answer && i!=question.participantAnswer">
+                            {{option}} <mat-icon [ngClass]="i===question.answer ? 'green': 'red'"
+                                *ngIf="i===question.answer || i===question.participantAnswer">
+                                {{i===question.answer ? 'check': 'close'}}</mat-icon>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <p class="answer">Your Answer: {{question.options[question.participantAnswer]}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </mat-card>
+</div>

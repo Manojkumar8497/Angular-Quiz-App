@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<!-- Spinner -->
+<div class="spinner" *ngIf="isLoading" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center"
+    fxFlexFill="100%">
+    <mat-spinner></mat-spinner>
+</div>
+<!-- Quiz container -->
+<div id="quiz-container" *ngIf="quizService.questionData && !isLoading" fxLayout="row" fxLayout.xs="column"
+    fxLayoutAlign="center center" fxFlexFill="100%">
+    <!-- Timer -->
+    <div class="display-timer">
+        <button mat-flat-button color="primary">
+            {{quizService.displayTimeElapsed()}}
+        </button>
+    </div>
+    <mat-card class="mat-elevation-z5" fxFlex="50%" fxFlex.xs="100%" fxLayout.xs="column" [style]="valueAsStyle">
+        <mat-card-header>
+            <!-- Question -->
+            <mat-card-title>{{quizService.qnProgress+1}}. {{quizService.questionData[quizService.qnProgress].question}}
+            </mat-card-title>
+        </mat-card-header>
+        <!-- Image -->
+        <img *ngIf="quizService.questionData[quizService.qnProgress].imageName" mat-card-image
+            [src]="'../assets/img/'+quizService.questionData[quizService.qnProgress].imageName" alt="Question image">
+        <mat-card-content *ngIf="quizService.questionData[quizService.qnProgress].options.length">
+            <!-- Options -->
+            <mat-radio-group class="example-radio-group" fxLayout="column">
+                <mat-radio-button class="example-radio-button"
+                    *ngFor="let option of quizService.questionData[quizService.qnProgress].options let i = index"
+                    [value]="i" (change)="radioChange($event)"
+                    [checked]="quizService.questionData[quizService.qnProgress].participantAnswer === i">
+                    {{option}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-card-content>
+        <!-- Previous and Next button -->
+        <mat-card-actions>
+            <div class="btnGroup">
+                <button mat-raised-button color="primary" (click)="clickPrevBtn()" [disabled]="!checkPrev">Prev</button>
+                <button mat-raised-button color="primary"
+                    (click)="clickNextBtn(quizService.questionData[quizService.qnProgress].id)"
+                    [disabled]="!checkNext">Next</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

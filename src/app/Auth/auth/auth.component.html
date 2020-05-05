@@ -1,0 +1,40 @@
+<div class="container">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlexFill="100%">
+        <mat-card fxFlex="70%" fxFlex.xs="100%" [class.mat-elevation-z5]="true" fxLayout.xs="column">
+            <div class="auth-left" fxFlex="50%" fxLayoutAlign="center center">
+                <img src="/assets/img/quiz.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="auth-right" fxFlex="50%" fxLayoutAlign="center center">
+                <div class="form" fxFlex="80%">
+                    <mat-card-title>Welcome to Angular Quiz</mat-card-title>
+                    <form class="auth-form" fxLayout="column" fxLayoutAlign="center" [formGroup]="formGroup"
+                        (ngSubmit)="submitForm()">
+                        <!-- Username -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>UserName</mat-label>
+                            <input matInput placeholder="UserName" formControlName="username" type="text"
+                                autocomplete="off">
+                            <mat-icon matSuffix>person</mat-icon>
+                            <small *ngIf="form.username.touched">
+                                <mat-hint *ngIf="form.username.errors?.required">*This field is required.</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <!-- Email -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" type="email" autocomplete="off">
+                            <mat-icon matSuffix>email</mat-icon>
+                            <small *ngIf="form.email.touched">
+                                <mat-hint *ngIf="form.email.errors?.required">*This field is required.</mat-hint>
+                                <mat-hint *ngIf="form.email.errors?.pattern">*Email id is invalid</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <!-- Submit button -->
+                        <button type="submit" mat-raised-button color="primary"
+                            [disabled]="formGroup.invalid || isLoading">Click To Start</button>
+                    </form>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

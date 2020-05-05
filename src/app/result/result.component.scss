@@ -1,0 +1,77 @@
+.result-container {
+  mat-card {
+    margin: 10rem 0;
+    border-radius: 10px;
+    .mr-5{
+      margin-right: 10px;
+    }
+    .padding {
+      padding: 1rem 0;
+    }
+    .result-content {
+      mat-card-title {
+        font-size: 30px;
+        span {
+          color: #3f51b5;
+        }
+      }
+      .inner-content {
+        padding: 2rem 0;
+        p {
+          line-height: 1.5;
+        }
+        .score {
+          font-size: 1.5rem;
+          font-weight: 500;
+          opacity: 0.7;
+        }
+        .timer {
+          font-size: 1.2rem;
+          font-weight: 500;
+          opacity: 0.7;
+        }
+        button {
+          margin-top: 20px;
+          padding: 5px 20px;
+        }
+      }
+    }
+    .accordion {
+      padding: 3rem 0;
+      .title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        opacity: 0.7;
+        padding: 1rem 0;
+      }
+      .primary {
+        color: #3f51b5;
+      }
+      .accent {
+        color: #ff4081;
+      }
+      mat-panel-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      .example-radio-group {
+        margin: 10px;
+        padding-left: 20px;
+        .example-radio-button {
+          margin: 5px;
+        }
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: #ff4081;
+      }
+      .answer {
+        padding-left: 2rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

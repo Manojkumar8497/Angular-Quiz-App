@@ -1,0 +1,15 @@
+mat-toolbar {
+  position: fixed;
+  z-index: 100;
+  .example-fill-remaining-space {
+    flex: 1 1 auto;
+  }
+  .link {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+}
