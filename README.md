@@ -21,7 +21,7 @@ I've taken the Quiz data from the cloud firestore database. Before starting the 
   <img src="https://raw.githubusercontent.com/Manojkumar8497/Angular-Quiz-App/master/src/assets/img/creds-firebase.jpg"/>
 </p>
 
-<b>Note:</b> You need to add your firebase project credentials into environment.ts file.
+<b>Note:</b> You need to add this firebase credentials into environment.ts file.
 
 ## Installation
 
