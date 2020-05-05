@@ -15,7 +15,7 @@
 
 I've used Angular, Angular Material, and Firebase for this project. The Angular Material plays the main role for the UI side and I used the firebase as a server-side. 
 
-I've taken the Quiz data from the cloud firestore database. Before starting the project, Create one firebase cloud firestore database for quiz data. After that, you're able to see this screen.
+I've taken the Quiz data from the cloud firestore database. Before starting the project, Create one cloud firestore database in firebase. After that, you're able to see this screen.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Manojkumar8497/Angular-Quiz-App/master/src/assets/img/creds-firebase.jpg"/>
